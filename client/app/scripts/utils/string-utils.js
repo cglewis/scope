@@ -99,7 +99,14 @@ export function formatDataType(field, referenceTimestampStr = null) {
         value: timestamp.from(referenceTimestamp),
         title: timestamp.utc().toISOString()
       };
-    }
+    },
+    duration(durationString) {
+      const duration = moment.duration(parseInt(durationString, 10) * 1000);
+      return {
+        value: duration.humanize(),
+        title: duration.humanize(),
+      };
+    },
   };
   const format = formatters[field.dataType];
   return format

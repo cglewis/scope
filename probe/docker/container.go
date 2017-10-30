@@ -430,7 +430,7 @@ func (c *container) GetNode() report.Node {
 		if c.container.HostConfig != nil {
 			networkMode = c.container.HostConfig.NetworkMode
 		}
-		latest[ContainerUptime] = uptime.String()
+		latest[ContainerUptime] = strconv.Itoa(int(uptime.Seconds()))
 		latest[ContainerRestartCount] = strconv.Itoa(c.container.RestartCount)
 		latest[ContainerNetworkMode] = networkMode
 	}
